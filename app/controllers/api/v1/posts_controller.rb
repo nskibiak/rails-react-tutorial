@@ -1,7 +1,7 @@
 class Api::V1::PostsController < ActionController::Base
   # changed inheritance from Application Controller to Action Controller
   def index
-    @posts = Post.all
+    @posts = Post.order(created_at: :desc)
     render json: @posts
   end
 

@@ -5,7 +5,10 @@ export const POST_CREATED = 'POST_CREATED';
 export function createPost(body, callback) {
   const request = fetch("/api/v1/posts", {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
+    headers: {
+      "Accept": "application/json",
+      'Content-Type': 'application/json'
+    },
     body: JSON.stringify(body)
   }).then(response => response.json())
     .then(callback);
