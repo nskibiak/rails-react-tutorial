@@ -27,9 +27,14 @@ const reducers = combineReducers({
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const middlewares = composeEnhancers(applyMiddleware(logger, reduxPromise));
 
+const container = document.querySelector('.container');
+const initialState = {
+  posts: JSON.parse(container.dataset.posts)
+}
+
 ReactDOM.render(
   <React.StrictMode>
-    <Provider store={createStore(reducers, {}, middlewares)}>
+    <Provider store={createStore(reducers, initialState, middlewares)}>
       <Router history={history}>
         <div className="thin-container">
           <Switch>
